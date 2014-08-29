@@ -1,0 +1,11 @@
+{% extends "store/base.html" %}
+{% load staticfiles %}
+{% block title %}Welcome to Masline Electronics{% endblock %}
+
+{% block content %}
+	<ul>
+		{% for manu in manufacts %}
+			<li><a href="{{ manu.home_page }}">{{ manu.name }}</a>{{ manu.logo_thumb|safe }}</li>
+		{% endfor %}
+	</ul>
+{% endblock %}

@@ -1,0 +1,15 @@
+{% extends "store/base.html" %}
+{% load staticfiles %}
+{% block title %}{{ part.item_no }} | Masline Electronics{% endblock %}
+
+{% block content %}
+	<ul>
+		{% autoescape off %}
+		<li>{{ part.item_no }}</li>
+		<li>{{ part.manu_no }}</li>
+		<li>{{ part.thumbs }}</li>
+		<li>{{ part.prices }}</li>
+		<li>{{ part.weight }}</li>
+		{% endautoescape %}
+	</ul>
+{% endblock content %}

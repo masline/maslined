@@ -1,0 +1,99 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+<head lang="en">
+	<meta charset="UTF-8">
+	<title>{% block title %}{% endblock %}</title>
+</head>
+<body>
+	<header>
+		<div id="top-logo" class="clear">
+			<a href="/"><img src="{% static 'store/logo.png' %}" /></a>
+		</div>
+		<nav>
+			<ul class="clear">
+				<li><a href="/">Home</a></li>
+				<li><a href="/catalog">Catalog</a></li>
+				<li><a href="/services">Services</a></li>
+				<li><a href="/about">About Us</a></li>
+				<li><a href="/news">News</a></li>
+				<li><a href="/linecard">Linecard</a></li>
+				<li><a href="/contact">Contact Us</a></li>
+			</ul>
+		</nav>
+		<div class="banner"></div>
+	</header>
+
+    <div class="content">{% block content %}{% endblock %}</div>
+
+	<style>
+		body {
+			margin: 0;
+			overflow: visible;
+		}
+		header {
+			background: url({% static 'store/header_bg.gif' %}) repeat-x;
+			/*text-align: center;*/
+			height: 200px;
+			width: 100%;
+		}
+		header .banner {
+			background: transparent url({% static 'store/main-sprite.png' %}) repeat-x scroll center -90px;
+			height: 333px;
+			overflow: hidden;
+			width: 100%;
+			position: relative;
+			z-index: -5;
+			top: -282px;
+		}
+		#top-logo {
+			height: 130px;
+			padding-top: 15px;
+			width: 960px;
+			margin: 0 auto;
+		}
+		nav {
+			width: 960px;
+			background: transparent url({% static 'store/main-sprite.png' %}) repeat-x scroll left top;
+			height: 45px;
+			line-height: 45px;
+			margin: 0 auto;
+			position: relative;
+			top: -32px;
+		}
+		nav ul {
+			float: left;
+			margin: 0;
+		}
+		nav ul > li {
+			float: left;
+			background: transparent url({% static 'store/main-sprite.png' %}) repeat-x scroll left top;
+		}
+		nav ul > li:hover {
+			background-position: left -145px;
+		}
+		nav a {
+			color: #FFF;
+			display: block;
+			font-size: 25px;
+			padding: 0 22px;
+			text-decoration: none;
+			vertical-align: middle;
+		}
+		.clear:after {
+			content: ".";
+			display: block;
+			height: 0;
+			clear: both;
+			visibility: hidden;
+		}
+		.content {
+			width: 900px;
+			margin: 20px auto;
+		}
+		ul > li {
+			list-style-type: none;
+		}
+	</style>
+</body>
+</html>

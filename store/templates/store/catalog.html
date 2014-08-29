@@ -1,0 +1,41 @@
+{% extends "store/base.html" %}
+{% load staticfiles %}
+{% block title %}Catalog | Masline Electronics{% endblock %}
+
+{% block content %}
+	<p>
+	{% if not prev_page and not next_page %}
+		<a href="/catalog?p=1">View paginated</a>
+	{% else %}
+		<a href="/catalog?p=all">View all</a>
+	{% endif %}
+	</p>
+	<table>
+		<thead><tr>
+			<th>Part Number</th>
+			<th>Manufacturer</th>
+			<th>Image</th>
+			<th>Pricing</th>
+			<th>Weight</th>
+		</tr></thead>
+		<tbody>
+		{% for part in products %}
+			<tr>
+				{% autoescape off %}
+				<td><a href="/p/{{ part.slug_url }}">{{ part.item_no }}</a></td>
+				<td>{{ part.manu_no }}</td>
+				<td>{{ part.thumbs }}</td>
+				<td>{{ part.prices }}</td>
+				<td>{{ part.weight }}</td>
+				{% endautoescape %}
+			</tr>
+		{% endfor %}
+		</tbody>
+	</table>
+	{% if prev_page %}
+		<a href="/catalog?p={{ prev_page }}" style="float: left;">Previous</a>
+	{% endif %}
+	{% if next_page %}
+		<a href="/catalog?p={{ next_page }}" style="float: right;">Next</a>
+	{% endif %}
+{% endblock content %}
